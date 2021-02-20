@@ -1,13 +1,26 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<mat-toolbar color="primary">
+<mat-toolbar style="background-color: #632c6b;" *ngIf = "removeHeader">
    <mat-toolbar-row>
      <!--  <span>HOME</span> -->
-      <span><a href="/">HOME</a></span>
+      <span>Logo </span>
       <span class="spacer"></span>
-      <a  mat-button  routerLink="/register">Register</a>
-      <a  mat-button  routerLink="/login">Login</a>
+      <input type="text"  [(ngModel)]="searchData" (ngModelChange)="searchEmp()" style="width: 30%;border-radius: 25px;"class="form-control" placeholder="search" id="inputSuccess2"/>
+    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+      <a  mat-button  > <div class="dropdown">
+         <button class="dropbtn">{{userData.name}} 
+           <i class="fa fa-caret-down"></i>
+         </button>
+         <div class="dropdown-content">
+           <a href="#">My Profile</a>
+           <a (click)="logout()">Log Out</a>
+         
+         </div>
+       </div> </a>
+       <img src="{{userData.profile_pic}}" style="width: 50px;border-radius: 25px;" >
    </mat-toolbar-row>
 </mat-toolbar>
+
+
 <router-outlet></router-outlet>
 
 

@@ -1,0 +1,38 @@
+.my-form{
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .errmsg {
+    color: red !important;
+      font-size: 12px !important;
+      bottom: 22px;
+      position: relative;
+      text-align: left;
+      left: 12px;
+  }
+
+  .inpt-cl {
+    width: 136%;
+    height: 64px;
+    border: 1px solid #632c6b;
+            padding: 10px;
+            border-radius: 25px;
+         outline: none;
+  }
+  #b_container {
+    display: flex;
+    justify-content: center;
+  }
+
+.test {
+    border: 1px solid gray;
+padding: 10px;
+border-radius: 25px;
+width: 40%;margin:11rem auto;
+}

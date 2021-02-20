@@ -1,48 +1,72 @@
- <mat-toolbar>
-  <span>Registration</span>
-</mat-toolbar>
-<mat-card class="my-card">
-   <mat-card-content>
-      <form class="my-form">  
-         <mat-form-field class="full-width">
-            <mat-label>First Name</mat-label>
-            <input  matInput  placeholder="First name"  name="fname"  required>
-         </mat-form-field>
-         <mat-form-field class="full-width">
-            <mat-label>Last Name</mat-label>
-            <input  matInput  placeholder="Last Name" name="lname"  required>
-         </mat-form-field>
-         <mat-form-field class="full-width">
-            <mat-label>Address</mat-label>
-            <input  matInput  placeholder="Address" name="address"  required>
-         </mat-form-field>
+<!-- <mat-toolbar>
+  <span>LOGIN</span>
+</mat-toolbar> -->
+<mat-card class="my-card" style=" border: 1px solid gray;
+padding: 10px;
+border-radius: 25px;
+width: 40%;margin:11rem auto;"
+   
+>
+   <mat-card-content style = "display: flex;
+   justify-content: center;">
+    
+      <form  [formGroup]="regiForm" class="my-form" style="width: 50%;
+      margin-left: -8rem;">
+      <h2 style="color: #632c6b;    margin-left: 6em;
+   ">Sign In</h2>
+   <mat-form-field class="full-width">
+      <mat-label>Name</mat-label>
+      <input  class="inpt-cl" placeholder="name" type="text" formControlName="name" name="name">
+   </mat-form-field>
+   <span class="errmsg" *ngIf="(regiForm.controls['name'].hasError('required') && btnClicked)">
+      *name  is required
+    </span>
          <mat-form-field class="full-width">
             <mat-label>Email</mat-label>
-            <input  matInput  placeholder="Email" name="email">
+            <input   class="inpt-cl" placeholder="Email" name="email"formControlName="email" [ngClass]="{ 'is-invalid': submitted && regiForm.controls.email.errors  }" (input)="validateEmail()">
+        
+
+      <span class="errmsg" *ngIf="!emailvalid && btnClicked">
+        *Email is invalid
+      </span>
          </mat-form-field>
+         <mat-error *ngIf="regiForm.controls['email'].hasError('required') && btnClicked " class="errmsg">
+            *Please enter email</mat-error>
+            <span class="errmsg" *ngIf="regiForm.controls['email'].hasError('required') && btnClicked">
+               *Email is required
+             </span>
+         <mat-form-field class="full-width">
+            <mat-label>Mobile.No</mat-label>
+            <input  class="inpt-cl" placeholder="Mobile.No" type="number" formControlName="mobileno" name="mobileno">
+         </mat-form-field>
+         <span class="errmsg" *ngIf="(regiForm.controls['mobileno'].hasError('required') && btnClicked)">
+            *mobileno  is required
+          </span>
          <mat-form-field class="full-width">
             <mat-label>Password</mat-label>
-            <input  matInput  placeholder="Password"  name="password">
+            <input  class="inpt-cl" placeholder="Password" type="password" formControlName="password" name="password">
          </mat-form-field>
-         <section class="example-section">
-            <label class="full-width">Gender:</label>
-            <br>
-            <br>
-            <mat-radio-group>
-               <mat-radio-button class="example-margin" value="after">Male</mat-radio-button>
-               <mat-radio-button class="example-margin" value="before">Female</mat-radio-button>
-               <mat-radio-button class="example-margin" value="before">Other</mat-radio-button>
-            </mat-radio-group>
-         </section>
+         <span class="errmsg" *ngIf="(regiForm.controls['password'].hasError('required') && btnClicked)">
+            *password  is required
+          </span>
          <mat-form-field class="full-width">
-            <mat-label>Date of Birth</mat-label>
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-label>Profile Pic</mat-label>
+            <input  class="inpt-cl" placeholder="Profile Pic" type="file" accept="image/x-png,image/gif,image/jpeg" (change)="onSelectFile($event)"  formControlName="profile_pic" name="profile_pic"><br>
+            <span>Profile Picture(Optional)</span>
+
          </mat-form-field>
       </form>
    </mat-card-content>
-   <mat-card-actions>
-      <button mat-raised-button (click)="register()" color="primary">REGISTER</button>
+   <a [routerLink]="'/login'" style="    display: flex;
+   justify-content: center;"> Already Have Account?</a>
+   <mat-card-actions style="display: flex;justify-content: center;">
+    
+      <button  style=" border: 1px solid gray;
+      padding: 10px;
+      border-radius: 25px; color: white;
+            background-color: #632c6b;    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;width: 65%;
+      " (click)="register()" color="primary">REGISTER</button>
    </mat-card-actions>
 </mat-card>

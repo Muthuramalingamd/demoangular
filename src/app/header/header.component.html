@@ -1,0 +1,42 @@
+<mat-toolbar style="background-color: #632c6b;">
+  <mat-toolbar-row style="background-color: #632c6b;">
+    <!--  <span>HOME</span> -->
+     <span>Logo </span>
+     <span class="spacer"></span>
+     <input type="text"  [(ngModel)]="searchData" (ngModelChange)="searchEmp()" style="width: 30%;border-radius: 25px;"class="form-control" placeholder="search" id="inputSuccess2"/>
+   <span class="glyphicon glyphicon-search form-control-feedback"></span>
+     <a  mat-button  > <div class="dropdown">
+      <button class="dropbtn">ccccc{{userData.name}}
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">My Profile</a>
+          <a (click)="logout()">Log Out</a>
+        
+        </div>
+      </div> </a>
+      <img src="{{userData.profile_pic}}" style="width: 50px;border-radius: 25px;" >
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="topnav" id="myTopnav">
+  <span>Logo </span>
+  <input type="text"  [(ngModel)]="searchData" (ngModelChange)="searchEmp()" style="width: 30%;border-radius: 25px;"class="form-control" placeholder="search" id="inputSuccess2"/>
+  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+    <a  mat-button  > <div class="dropdown">
+     <button class="dropbtn">ccccc{{userData.name}}
+         <i class="fa fa-caret-down"></i>
+       </button>
+       <div class="dropdown-content">
+         <a href="#">My Profile</a>
+         <a (click)="logout()">Log Out</a>
+       
+       </div>
+     </div> </a>
+     <img src="{{userData.profile_pic}}" style="width: 50px;border-radius: 25px;" >
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>

@@ -7,3 +7,21 @@
 .full-width {
   width: 100%;
 }
+
+.errmsg {
+  color: red !important;
+    font-size: 12px !important;
+    bottom: 22px;
+    position: relative;
+    text-align: left;
+    left: 12px;
+}
+
+.inpt-cl {
+  width: 136%;
+  height: 64px;
+  border: 1px solid #632c6b;
+          padding: 10px;
+          border-radius: 25px;
+       outline: none;
+}

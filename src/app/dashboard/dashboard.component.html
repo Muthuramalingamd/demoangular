@@ -1,0 +1,105 @@
+
+<div id="b_container">
+  <div class="col-md-6" style="    margin-left: -5%;
+  ">
+  <mat-card class="my-card" style=" border: 1px solid gray;
+padding: 10px;
+border-radius: 25px;
+width: 70%;margin:11rem auto;"
+   
+>
+   <mat-card-content style = "display: flex;
+   justify-content: center;">
+    
+      <form  [formGroup]="empForm" class="my-form" style="width: 50%;
+      margin-left: -7rem;">
+      <h2 style="color: #632c6b;    margin-left: 3em;
+   ">Add Employee</h2>
+   <mat-form-field class="full-width">
+    
+      <mat-label style="color: black;"><span>Test</span></mat-label>
+      <input   class="inpt-cl"  placeholder="name" (input)="checkName()" formControlName="name" name="name">
+   </mat-form-field>
+   <span class="errmsg" *ngIf="isnamelimit">
+    *name should be more than 2 letter
+  </span>
+  <span class="errmsg" *ngIf="empForm.controls['name'].hasError('required') && btnClicked">
+    *name is required
+  </span>
+         <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input  class="inpt-cl"  placeholder="Email" name="email"formControlName="email" [ngClass]="{ 'is-invalid': submitted && empForm.controls.email.errors  }" (input)="validateEmail();checkEmpEmailData()">
+           <mat-error *ngIf="empForm.controls['email'].hasError('required') && btnClicked " class="errmsg1">
+            *Please enter email</mat-error>
+
+      
+         </mat-form-field>
+         <span class="errmsg" *ngIf="!emailvalid && btnClicked">
+          *Email is invalid
+        </span>
+        <span class="errmsg" *ngIf="empForm.controls['email'].hasError('required') && btnClicked">
+          *email is required
+        </span>
+        <span class="errmsg" *ngIf="is_email_alreadyexist">
+          *Email is already exist
+        </span>
+         <mat-form-field class="full-width">
+          <mat-label>Mobile No</mat-label>
+          <input   class="inpt-cl"  placeholder="mobileno" (input)="checkEmpMobilenoData()" formControlName="mobileno" name="mobileno">
+       </mat-form-field>
+       <span class="errmsg" *ngIf="is_mobile_no_alreadyexist">
+        *Mobile no is already exist
+      </span>
+      <span class="errmsg" *ngIf="empForm.controls['mobileno'].hasError('required') && btnClicked">
+        *mobileno is required
+      </span>
+       <mat-form-field class="full-width">
+        <mat-label>profile</mat-label>
+        <input   type='file' (change)="onSelectFile($event)" accept="image/x-png,image/gif,image/jpeg"  formControlName="profile_pic" name="profile_pic"><br>
+        <span>Profile picture(optional)</span>
+     </mat-form-field>
+      </form>
+   </mat-card-content>
+   <mat-card-actions style="display: flex;justify-content: center;">
+      <button  style=" border: 1px solid gray;
+      padding: 10px;
+      border-radius: 25px; color: white;
+            background-color: #632c6b;    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+      " (click)="saveEmployee()" *ngIf="!isupdate" color="primary">Save</button>
+        <button  style=" border: 1px solid gray;
+        padding: 10px;
+        border-radius: 25px; color: white;
+              background-color: #632c6b;    margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 30px;
+        " (click)="updateEmployeeDetails()" *ngIf="isupdate" color="primary">Update</button>
+   </mat-card-actions>
+</mat-card>
+</div>
+<div><table class="table test">
+  <thead>
+    <tr style="
+    background-color: #632c6b;color: white;">
+    
+      <th scope="col" (click)="sorting('name')">Name</th>
+      <th scope="col">Mobile No</th>
+      <th scope="col" (click)="sorting('name')">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of allEmployeeList ">
+   
+        <td>{{item.name}}</td>
+        <td>{{item.mobileno}}</td>
+        <td>{{item.email}}</td>
+      <td><img src="https://i.imgur.com/0bgx9Fm.png"  (click)="updateEmployee(item)"><img src="https://i.imgur.com/nt2K1UE.png" (click)="deleteEmployee(item)"></td>
+    </tr>
+  </tbody>
+  
+</table>
+<pagination-controls (pageChange)="pageChange()"></pagination-controls></div>
+
+</div>
